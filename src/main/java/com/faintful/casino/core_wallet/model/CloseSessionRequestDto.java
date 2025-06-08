@@ -3,12 +3,8 @@ package com.faintful.casino.core_wallet.model;
 import lombok.Builder;
 import lombok.Data;
 
-import java.math.BigDecimal;
-
 @Data
 @Builder
-public class OpenSessionResponseDTO {
+public class CloseSessionRequestDto {
     String sessionId;
-    String admId;
-    BigDecimal balance;
 }
