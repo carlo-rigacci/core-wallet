@@ -1,8 +1,6 @@
 package com.faintful.casino.core_wallet.controller;
 
-import com.faintful.casino.core_wallet.model.GameMode;
-import com.faintful.casino.core_wallet.model.OpenSessionRequestDTO;
-import com.faintful.casino.core_wallet.model.OpenSessionResponseDTO;
+import com.faintful.casino.core_wallet.model.*;
 import com.faintful.casino.core_wallet.services.SessionService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.extern.slf4j.Slf4j;
@@ -56,7 +54,7 @@ public class SessionControllerTest {
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(objectMapper.writeValueAsString(openSessionRequestDTO));
 
-        OpenSessionResponseDTO openSessionResponseDTO = OpenSessionResponseDTO.builder()
+        OpenSessionResponseDto openSessionResponseDTO = OpenSessionResponseDto.builder()
                 .sessionId("123")
                 .admId("123")
                 .balance(BigDecimal.valueOf(1234567890))
@@ -75,6 +73,37 @@ public class SessionControllerTest {
                 .andExpect(MockMvcResultMatchers.jsonPath("$.balance").value("1234567890"));
         //Log
 
+        log.info(resultActions.andReturn().getResponse().getContentAsString());
+    }
+
+    @Test
+    void successfullyReturnsCloseSessionResponseFromCloseSessionRequest() throws Exception {
+        //Arrange
+        CloseSessionRequestDto closeSessionRequestDto = CloseSessionRequestDto.builder().sessionId("123").build();
+
+        MockHttpServletRequestBuilder mockPostRequest = MockMvcRequestBuilders
+                .post(SessionController.SESSION_PATH + "/close")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(objectMapper.writeValueAsString(closeSessionRequestDto));
+
+        CloseSessionResponseDto closeSessionResponseDto = CloseSessionResponseDto.builder()
+                .playerId(123L)
+                .gameId(123)
+                .build();
+
+        BDDMockito.given(sessionService.close(closeSessionRequestDto)).willReturn(closeSessionResponseDto);
+
+        //Act
+
+        ResultActions resultActions = mockMvc.perform(mockPostRequest)
+
+        //Assert
+                .andExpect(MockMvcResultMatchers.status().isOk())
+                .andExpect(MockMvcResultMatchers.content().contentType(MediaType.APPLICATION_JSON))
+                .andExpect(MockMvcResultMatchers.jsonPath("$.playerId").value("123"))
+                .andExpect(MockMvcResultMatchers.jsonPath("$.gameId").value("123"));
+
+        //Log
         log.info(resultActions.andReturn().getResponse().getContentAsString());
     }
 }
