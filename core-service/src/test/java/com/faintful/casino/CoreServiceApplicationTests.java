@@ -1,10 +1,10 @@
-package com.faintful.casino.core_wallet;
+package com.faintful.casino;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class CoreWalletApplicationTests {
+class CoreServiceApplicationTests {
 
 	@Test
 	void contextLoads() {

@@ -1,10 +1,10 @@
-package com.faintful.casino.core_wallet.controller;
+package com.faintful.casino.controller;
 
-import com.faintful.casino.core_wallet.model.CloseSessionRequestDto;
-import com.faintful.casino.core_wallet.model.CloseSessionResponseDto;
-import com.faintful.casino.core_wallet.model.OpenSessionRequestDTO;
-import com.faintful.casino.core_wallet.model.OpenSessionResponseDto;
-import com.faintful.casino.core_wallet.services.SessionService;
+import com.faintful.casino.model.CloseSessionRequestDto;
+import com.faintful.casino.model.CloseSessionResponseDto;
+import com.faintful.casino.model.OpenSessionRequestDto;
+import com.faintful.casino.model.OpenSessionResponseDto;
+import com.faintful.casino.services.SessionService;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -20,8 +20,8 @@ public class SessionController {
     @Autowired
     SessionService sessionService;
     @PostMapping("/open")
-    OpenSessionResponseDto openSession(@RequestBody OpenSessionRequestDTO openSessionRequestDTO) {
-        return sessionService.open(openSessionRequestDTO);
+    OpenSessionResponseDto openSession(@RequestBody OpenSessionRequestDto openSessionRequestDto) {
+        return sessionService.open(openSessionRequestDto);
     }
     @PostMapping("/close")
     CloseSessionResponseDto closeSession(@RequestBody CloseSessionRequestDto closeSessionRequestDto) {

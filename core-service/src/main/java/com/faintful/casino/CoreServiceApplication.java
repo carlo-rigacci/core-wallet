@@ -1,13 +1,13 @@
-package com.faintful.casino.core_wallet;
+package com.faintful.casino;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class CoreWalletApplication {
+public class CoreServiceApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(CoreWalletApplication.class, args);
+		SpringApplication.run(CoreServiceApplication.class, args);
 	}
 
 }

@@ -1,11 +1,11 @@
-package com.faintful.casino.core_wallet.services;
+package com.faintful.casino.services;
 
-import com.faintful.casino.core_wallet.model.CloseSessionRequestDto;
-import com.faintful.casino.core_wallet.model.CloseSessionResponseDto;
-import com.faintful.casino.core_wallet.model.OpenSessionRequestDTO;
-import com.faintful.casino.core_wallet.model.OpenSessionResponseDto;
+import com.faintful.casino.model.CloseSessionRequestDto;
+import com.faintful.casino.model.CloseSessionResponseDto;
+import com.faintful.casino.model.OpenSessionRequestDto;
+import com.faintful.casino.model.OpenSessionResponseDto;
 
 public interface SessionService {
-    OpenSessionResponseDto open(OpenSessionRequestDTO openSessionRequestDto);
+    OpenSessionResponseDto open(OpenSessionRequestDto openSessionRequestDto);
     CloseSessionResponseDto close(CloseSessionRequestDto closeSessionRequestDto);
 }

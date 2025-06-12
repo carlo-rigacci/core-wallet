@@ -1,4 +1,4 @@
-package com.faintful.casino.core_wallet.model;
+package com.faintful.casino.model;
 
 import lombok.Builder;
 import lombok.Data;

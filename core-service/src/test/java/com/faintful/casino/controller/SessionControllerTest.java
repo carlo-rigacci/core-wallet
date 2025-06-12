@@ -1,7 +1,7 @@
-package com.faintful.casino.core_wallet.controller;
+package com.faintful.casino.controller;
 
-import com.faintful.casino.core_wallet.model.*;
-import com.faintful.casino.core_wallet.services.SessionService;
+import com.faintful.casino.model.*;
+import com.faintful.casino.services.SessionService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
@@ -32,7 +32,7 @@ public class SessionControllerTest {
     @TestConfiguration
     static class MockConfig {
         @Bean
-        SessionService gameLaunchService() {
+        SessionService sessionService() {
             return Mockito.mock(SessionService.class);
         }
     }
@@ -40,7 +40,7 @@ public class SessionControllerTest {
     @Test
     void successfullyReturnsOpenSessionResponseFromOpenSessionRequest() throws Exception {
         //Arrange
-        OpenSessionRequestDTO openSessionRequestDTO = OpenSessionRequestDTO.builder()
+        OpenSessionRequestDto openSessionRequestDTO = OpenSessionRequestDto.builder()
                 .playerId(1234567890L)
                 .gameId(123)
                 .deviceId(1)
